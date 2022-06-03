@@ -1,0 +1,23 @@
+{
+  "name": "data-cadex-helene-nguyen",
+  "version": "1.0.0",
+  "description": "Cadavre excquis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Cassini/Data-cadex-helene-nguyen.git"
+  },
+  "author": "yumicode - O'clock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Cassini/Data-cadex-helene-nguyen/issues"
+  },
+  "homepage": "https://github.com/O-clock-Cassini/Data-cadex-helene-nguyen#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}

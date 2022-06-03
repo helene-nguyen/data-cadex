@@ -1,10 +1,12 @@
 {
+  "type": "module",
   "name": "data-cadex-helene-nguyen",
   "version": "1.0.0",
   "description": "Cadavre excquis",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",

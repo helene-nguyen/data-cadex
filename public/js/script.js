@@ -130,7 +130,7 @@ const app = {
           //~write the sentence
           completeSentence = rowElement.querySelector(
             '.sentence'
-          ).textContent = `${randomName} ${randomAdjectives} ${randomVerbs} ${randomComplements}`;
+          ).textContent = `${randomName}  ${randomVerbs} ${randomComplements} ${randomAdjectives}`;
           tableBodyElement.appendChild(rowElement);
         }
       }

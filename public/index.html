@@ -23,7 +23,7 @@
     </header>
     <main>
         <div class="formOpen button">Formulaire</div>
-        <form method="POST">
+        <form action="/v1/cadex" method="POST">
             <div class="formClose button">X</div>
             <div>
                 <label for="name">Nom :</label>
@@ -38,7 +38,7 @@
                 <input type="text" id="complement">
             </div>
             <div>
-                <button class="button" id="valider">Valider</button>
+                <button class="button" id="valider" type="submit">Valider</button>
             </div>
         </form>
         <button class="button" id="again">Again !</button>
@@ -47,17 +47,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Toutes les phrases random</th>
+                        <th>Quelques cadex random</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <!-- TEMPLATE ROWS -->
                     <template id="template-sentence">
                         <tr>
                             <td class="sentence"></td>
                         </tr>
                     </template>
-
 
                 </tbody>
             </table>

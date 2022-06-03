@@ -1,10 +1,10 @@
 //~import data
 import data from '../../data/parts.json';
 
-const cadexService = {
+const cadex = {
     generate() { 
         return {data};
     }
 };
 
-export { cadexService };
+export { cadex };

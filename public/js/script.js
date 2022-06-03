@@ -5,10 +5,12 @@ const app = {
 
   //^INITIALIZATION
   async init() {
-    console.log('TEST', location.origin);
+    // console.log('TEST', location.origin);
     await app.fetchCadex();
     await app.tryPost();
     await app.fetchAllCadex();
+
+    //event listeners
     document.querySelector('#again').addEventListener('click', app.fetchCadex);
     document.querySelector('.formOpen').addEventListener('click', app.showForm);
     document.querySelector('.formClose').addEventListener('click', app.hideForm);
@@ -102,19 +104,19 @@ const app = {
     } catch (error) {
       console.error(error);
     }
-    },
-  
-//^Testing json file
+  },
+
+  //^Testing json file
   async fetchAllCadex() {
     try {
-      const response = await fetch('http://localhost:4100/v1');
-
+        const response = await fetch(`${app.baseUrl}/cadex${location.search}`);
+        
       if (response.ok) {
         const tableBodyElement = document.querySelector('tbody');
         const parts = await response.json();
-  
-        let completeSentence;
 
+        let completeSentence;
+        //~only take the name array length
         for (const name of parts.names) {
           const template = document.querySelector('#template-sentence');
           const clone = document.importNode(template.content, true);
@@ -131,7 +133,7 @@ const app = {
           completeSentence = rowElement.querySelector(
             '.sentence'
           ).textContent = `${randomName}  ${randomVerbs} ${randomComplements} ${randomAdjectives}`;
-          tableBodyElement.appendChild(rowElement);
+          tableBodyElement.insertAdjacentElement('afterbegin',rowElement);
         }
       }
     } catch (error) {

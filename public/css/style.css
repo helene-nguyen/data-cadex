@@ -35,7 +35,6 @@ main {
     box-shadow: 0 5px 5px black inset;
     padding: 20px;
     display: flex;
-    justify-content: center;
     align-content: center;
     flex-wrap: wrap;
 }
@@ -147,4 +146,9 @@ thead,
 tfoot {
     background-color: #333;
     color: #fff;
+}
+
+table {
+
+    position: relative;
 }

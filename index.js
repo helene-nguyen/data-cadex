@@ -18,6 +18,9 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+//~static
+app.use(express.static('public'));
+
 //~Allow CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

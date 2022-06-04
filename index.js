@@ -4,10 +4,7 @@ import 'dotenv/config';
 //~Import modules
 import express from 'express';
 const app = express();
-//~locals
-// source : https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file
-/* import parts from './data/parts.json' assert {type: "json"};
-app.locals.parts = parts; */
+
 //~Protect our API
 import helmet from 'helmet';
 app.use(helmet());

@@ -9,8 +9,8 @@ body {
 
 header {
     text-align: center;
-    height: 120px;
-    padding: 20px;
+    height: 10rem;
+padding-top: 2rem;
     background: linear-gradient(#526e55 0%, #979d45 100%);
 }
 
@@ -30,11 +30,11 @@ header {
 
 main {
     position: relative;
-    background: radial-gradient( #8ba393, #82534d);
-    height: calc(100vh - 120px);
+    background: radial-gradient(#8ba393, #82534d);
     box-shadow: 0 5px 5px black inset;
-    padding: 20px;
+    padding: 3rem 1rem;
     display: flex;
+    flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
 }
@@ -55,9 +55,8 @@ main {
 }
 
 #again {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    width: 10em;
+    margin: 1em 0;
 }
 
 .word {
@@ -93,16 +92,13 @@ main {
 
 .formOpen {
     display: none;
-    position: absolute;
-    top: 20px;
-    left: 20px;
- }
+    width:10rem;
+    margin: 2em 0px 1em;
+    text-align:center;
+}
 
 form {
     display: none;
-    position: absolute;
-    top: 20px;
-    left: 20px;
     background-color: #979d4533;
     color: #3D4335;
     border: 3px solid #3D4335;
@@ -111,17 +107,17 @@ form {
 }
 
 .formClose {
-    position: absolute;
-    bottom: 10px;
-    right: 120px;
- }
+    margin-right: 1em;
+}
 
- form div {
+form div {
     padding: 0.3em;
 }
 
 form div:last-child {
     text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 
@@ -133,11 +129,17 @@ form label {
 
 form input {
     text-align: center;
-    width: 100px;
+    width: 10rem;
+}
+
+.cadex {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 table,
-td,th {
+td,
+th {
     border: 1px solid #333;
     padding: 1rem;
 }

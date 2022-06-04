@@ -2,6 +2,7 @@ const app = {
   //^VARIABLES
   baseUrl: `${location.origin}/v1`,
   container: document.querySelector('main'),
+  cadex: document.querySelector('.cadex'),
 
   //^INITIALIZATION
   async init() {
@@ -40,7 +41,7 @@ const app = {
     //on crée un span avec un délai d'affichage pour l'animation
     const spans = words.map(app.createWord);
     //on ajoute les spans en spreadant le tableau
-    app.container.append(...spans);
+    app.cadex.append(...spans);
   },
 
   //teste la présence de la route POST sur le serveur et affiche le formulaire si elle est présente
@@ -72,8 +73,9 @@ const app = {
     //on place les infos des inputs dans un object
     for (let i = 0; i < 4; i++) {
       const input = event.target[i];
+      
       if (input.value) {
-        json[input.id] = input.value;
+        json[input.id] = input.value; 
       }
     }
     console.log(json);
@@ -99,8 +101,19 @@ const app = {
   async fetchCadex() {
     try {
       const response = await fetch(`${app.baseUrl}/cadex${location.search}`);
-      const phrase = await response.json();
-      app.displayPhrase(phrase);
+      if (response.ok) {
+        let phrase = await response.json();
+
+        typeof phrase === 'object' ? phrase = `Hello, let's play !` : phrase;
+
+        app.displayPhrase(phrase);
+        
+        const inputs = document.querySelectorAll('input');
+        for (const input of inputs) {
+          input.value = '';
+        }
+
+      }
     } catch (error) {
       console.error(error);
     }

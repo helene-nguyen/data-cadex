@@ -21,10 +21,12 @@
         <span class="cadavre">Cadavre</span>
         <span class="exquis">Exquis</span>
     </header>
+
     <main>
+        <div class="cadex"></div>
         <div class="formOpen button">Formulaire</div>
         <form action="/v1/cadex" method="POST">
-            <div class="formClose button">X</div>
+
             <div>
                 <label for="name">Nom :</label>
                 <input type="text" id="name">
@@ -38,10 +40,21 @@
                 <input type="text" id="complement">
             </div>
             <div>
+                <label for="preposition">Préposition :</label>
+                <input type="text" id="preposition" placeholder="avec, en , dans, vers...">
+                <label for="pronom">Pronom :</label>
+                <input type="text" id="pronom" placeholder="qui, dont ...">
+            </div>
+
+            <div>
+                <div class="formClose button">X</div>
                 <button class="button" id="valider" type="submit">Valider</button>
             </div>
         </form>
+
         <button class="button" id="again">Again !</button>
+
+
 
         <div class="random-resume">
             <table>

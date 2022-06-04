@@ -12,7 +12,7 @@ async function fetchAllCadex(req, res, next) {
   }
 }
 
-async function doRandomCadex(req, res, next) {
+async function doRandomCadex(req, res) {
   try {
     const data = cadex.generate().data;
     //source that helps https://stackoverflow.com/questions/53215853/how-to-add-a-query-string-to-req-url-in-express
@@ -25,13 +25,13 @@ async function doRandomCadex(req, res, next) {
     const randomVerb = data.verbs[Math.floor(Math.random() * data.verbs.length)];
     const randomComplement = data.complements[Math.floor(Math.random() * data.complements.length)];
 
+    //~test if there is a name in the input
     name ? (req.query.name = name) : name = randomName;
     complement ? (req.query.complement = complement) : complement = randomComplement;
     adjective ? (req.query.adjective = adjective) : adjective = randomAdjective;
     verb ? (req.query.verb = verb) : verb = randomVerb;
-    /*  console.log(req.body); */
-    console.log(req.url);
 
+    //~return cadex
     res.json(`${name} ${verb} ${complement} ${adjective}`);
   } catch (err) {
     _500(err, req, res);

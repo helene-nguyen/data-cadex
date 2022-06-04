@@ -2,10 +2,10 @@
 import { Router } from 'express';
 const router = Router();
 
-import { fetchAllParts, test } from './controllers/mainController.js';
+import { fetchAllCadex, doRandomCadex } from './controllers/mainController.js';
 
 //~Routes
-router.get('/v1/cadex', fetchAllParts, test);
-router.post('/v1/cadex', test);
+router.get('/v1/cadex', fetchAllCadex);
+router.post('/v1/cadex', doRandomCadex, fetchAllCadex);
 
 export { router };

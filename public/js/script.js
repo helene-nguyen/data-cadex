@@ -6,9 +6,9 @@ const app = {
   //^INITIALIZATION
   async init() {
     // console.log('TEST', location.origin);
+    await app.fetchAllCadex();
     await app.fetchCadex();
     await app.tryPost();
-    await app.fetchAllCadex();
 
     //event listeners
     document.querySelector('#again').addEventListener('click', app.fetchCadex);
@@ -109,31 +109,31 @@ const app = {
   //^Testing json file
   async fetchAllCadex() {
     try {
-        const response = await fetch(`${app.baseUrl}/cadex${location.search}`);
-        
+      const response = await fetch(`${app.baseUrl}/cadex${location.search}`);
+
       if (response.ok) {
         const tableBodyElement = document.querySelector('tbody');
-        const parts = await response.json();
+        const cadex = await response.json();
 
         let completeSentence;
         //~only take the name array length
-        for (const name of parts.names) {
+        for (const name of cadex.names) {
           const template = document.querySelector('#template-sentence');
           const clone = document.importNode(template.content, true);
           const rowElement = clone.querySelector('tr');
 
           //~get random element from array
           //source https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-          const randomName = parts.names[Math.floor(Math.random() * parts.names.length)];
-          const randomAdjectives = parts.adjectives[Math.floor(Math.random() * parts.adjectives.length)];
-          const randomVerbs = parts.verbs[Math.floor(Math.random() * parts.verbs.length)];
-          const randomComplements = parts.complements[Math.floor(Math.random() * parts.complements.length)];
+          const randomName = cadex.names[Math.floor(Math.random() * cadex.names.length)];
+          const randomAdjective = cadex.adjectives[Math.floor(Math.random() * cadex.adjectives.length)];
+          const randomVerb = cadex.verbs[Math.floor(Math.random() * cadex.verbs.length)];
+          const randomComplement = cadex.complements[Math.floor(Math.random() * cadex.complements.length)];
 
           //~write the sentence
           completeSentence = rowElement.querySelector(
             '.sentence'
-          ).textContent = `${randomName}  ${randomVerbs} ${randomComplements} ${randomAdjectives}`;
-          tableBodyElement.insertAdjacentElement('afterbegin',rowElement);
+          ).textContent = `${randomName}  ${randomVerb} ${randomComplement} ${randomAdjective}`;
+          tableBodyElement.insertAdjacentElement('afterbegin', rowElement);
         }
       }
     } catch (error) {

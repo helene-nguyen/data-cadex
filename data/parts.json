@@ -1,14 +1,19 @@
 {
     "names": [
-        "un cheval",
-        "la mairie de Neuilly-sur-Seine",
-        "une huître",
-        "Julie Andrieu",
-        "Jacky et sa Subaru Impreza",
-        "la gendarmerie hollandaise",
-        "un chauve",
-        "Simon",
-        "2 chatons"
+        "Le petit chaton",
+        "Un pinguoin",
+        "Notre génial Jordan",
+        "Benjamin",
+        "La communauté de l'Anneau",
+        "Arthur Pendragon",
+        "Un chauve",
+        "Fredo",
+        "Gaetan",
+        "Fred",
+        "Océane",
+        "Pierre-Antoine",
+        "Mon petit frère",
+        "Ma petite soeur"
     ],
     "adjectives": [
         "bien cuit",
@@ -26,21 +31,51 @@
     ],
     "verbs": [
         "consulte",
-        "franchit",
+        "tappe",
         "cuisine",
         "remet en question",
         "s'immole pour protester contre",
         "enduit de confiture",
         "instaure",
-        "déguste"
+        "déguste",
+        "avale",
+        "lance par la fenêtre",
+        "décortique",
+        "pèle",
+        "abandonne",
+        "agrafe",
+        "bouscule",
+        "se bat contre"
     ],
     "complements": [
-        "un seau en plastique",
-        "la consommation de café",
-        "Yann",
-        "3 roues de voiture",
-        "2 mains gauches",
-        "un skieur débutant",
-        "la Mer Noire"
+        "une banane périmée",
+        "un lot de bûches",
+        "Gabriel",
+        "Arthur",
+        "Alexandre",
+        "10 petits cannetons",
+        "une plante carnivore",
+        "une grosse araignée velue",
+        "un rouleau de papier toilette",
+        "le gras du bide"
+    ],
+    "pronoms": [
+        "qui faisait peur",
+        "ce qui a causé sa perte",
+        "où la vie déborde de champignons",
+        "où les paisibles moutons dorment",
+        "que je connais personnellement",
+        "que pikachu a taclé",
+        "dont on ignore l'exacte existence"
+    ],
+    "prepositions": [
+        "avec un long poil dans le nez",
+        "avec ses cheveux en pétard",
+        "avec ses yeux qui sont en train de se dissoudre",
+        "dans un couloir sombre",
+        "dans la Terre du Milieu",
+        "pour effrayer les coccinelles",
+        "pour troller ses adversaires",
+        "et ça ne l'a pas réussi"
     ]
 }

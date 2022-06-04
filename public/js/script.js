@@ -71,7 +71,7 @@ const app = {
     event.preventDefault();
     const json = {};
     //on place les infos des inputs dans un object
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       const input = event.target[i];
       
       if (input.value) {
@@ -141,11 +141,13 @@ const app = {
           const randomAdjective = cadex.adjectives[Math.floor(Math.random() * cadex.adjectives.length)];
           const randomVerb = cadex.verbs[Math.floor(Math.random() * cadex.verbs.length)];
           const randomComplement = cadex.complements[Math.floor(Math.random() * cadex.complements.length)];
+          const randomPreposition = cadex.prepositions[Math.floor(Math.random() * cadex.prepositions.length)];
+          const randomPronom = cadex.pronoms[Math.floor(Math.random() * cadex.pronoms.length)];
 
           //~write the sentence
           completeSentence = rowElement.querySelector(
             '.sentence'
-          ).textContent = `${randomName}  ${randomVerb} ${randomComplement} ${randomAdjective}`;
+          ).textContent = `${randomName}  ${randomVerb} ${randomComplement} ${randomAdjective} ${randomPreposition} ${randomPronom}`;
           tableBodyElement.insertAdjacentElement('afterbegin', rowElement);
         }
       }

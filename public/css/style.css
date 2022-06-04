@@ -10,7 +10,7 @@ body {
 header {
     text-align: center;
     height: 10rem;
-padding-top: 2rem;
+    padding-top: 2rem;
     background: linear-gradient(#526e55 0%, #979d45 100%);
 }
 
@@ -59,42 +59,14 @@ main {
     margin: 1em 0;
 }
 
-.word {
-    padding: 5px 5px;
-    font-size: 2em;
-    font-weight: bold;
-    color: #3D4335;
-    text-shadow: 1px 1px 3px white;
-    animation: bump 0.5s ease-in-out forwards;
-    opacity: 0;
-}
 
-@keyframes bump {
-    0% {
-        opacity: 0;
-        transform: perspective(300px) translateZ(-200px);
-    }
 
-    10% {
-        transform: perspective(300px) translateZ(-200px);
-    }
-
-    60% {
-        opacity: 1;
-        transform: perspective(300px) translateZ(50px);
-    }
-
-    100% {
-        transform: perspective(300px) translateZ(0px);
-        opacity: 1;
-    }
-}
 
 .formOpen {
     display: none;
-    width:10rem;
+    width: 10rem;
     margin: 2em 0px 1em;
-    text-align:center;
+    text-align: center;
 }
 
 form {
@@ -135,6 +107,41 @@ form input {
 .cadex {
     text-align: center;
     margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.word {
+    padding: 5px 5px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #3D4335;
+    text-shadow: 1px 1px 3px white;
+    animation: bump 0.5s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes bump {
+    0% {
+        opacity: 0;
+        transform: perspective(300px) translateZ(-200px);
+    }
+
+    10% {
+        transform: perspective(300px) translateZ(-200px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: perspective(300px) translateZ(50px);
+    }
+
+    100% {
+        transform: perspective(300px) translateZ(0px);
+        opacity: 1;
+    }
 }
 
 table,

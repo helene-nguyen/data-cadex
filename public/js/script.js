@@ -73,12 +73,11 @@ const app = {
     //on place les infos des inputs dans un object
     for (let i = 0; i < 6; i++) {
       const input = event.target[i];
-      
+
       if (input.value) {
-        json[input.id] = input.value; 
+        json[input.id] = input.value;
       }
     }
-    console.log(json);
     try {
       //on envoie l'object stringifié au serveur en indiquant le bon Content-Type
       const response = await fetch(`${app.baseUrl}/cadex`, {
@@ -104,15 +103,14 @@ const app = {
       if (response.ok) {
         let phrase = await response.json();
 
-        typeof phrase === 'object' ? phrase = `Hello, let's play !` : phrase;
+        typeof phrase === 'object' ? (phrase = `Hello, let's play !`) : phrase;
 
         app.displayPhrase(phrase);
-        
+
         const inputs = document.querySelectorAll('input');
         for (const input of inputs) {
           input.value = '';
         }
-
       }
     } catch (error) {
       console.error(error);

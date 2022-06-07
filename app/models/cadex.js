@@ -1,15 +1,25 @@
-//~import data
-// source : https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file
-import data from '../../data/parts.json' assert{ type: 'json' };
-//for test, error with assert 
-//Support for the experimental syntax 'importAssertions' isn't currently enabled (3:42):
-// import data from '../../data/parts.json';
-// const { default: data } = await import('../../data/parts.json', {assert: { type: 'json' }})
+import { cadex } from '../service/cadex.js';
 
-const cadex = {
-    generate() { 
-        return {data};
-    }
-};
+class Cadex {
+  constructor() {
+    this.newCadex = cadex.generate();
 
-export { cadex };
+    this.name = this.newCadex.name;
+    this.verb = this.newCadex.verb;
+    this.complement = this.newCadex.complement;
+    this.adjective = this.newCadex.adjective;
+    this.preposition = this.newCadex.preposition;
+    this.pronom = this.newCadex.pronom;
+    this.phrase = this.newCadex.toString();
+
+    //get all datas
+    this.data = cadex.fetchAllData();
+  }
+}
+
+export { Cadex };
+
+/* // create new instance of Cadex
+const newCadex = new Cadex();
+console.log(newCadex instanceof Cadex); //expected output true
+*/

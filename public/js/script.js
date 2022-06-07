@@ -135,12 +135,12 @@ const app = {
 
           //~get random element from array
           //source https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-          const randomName = data.names[Math.floor(Math.random() * data.names.length)];
-          const randomAdjective = data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
-          const randomVerb = data.verbs[Math.floor(Math.random() * data.verbs.length)];
-          const randomComplement = data.complements[Math.floor(Math.random() * data.complements.length)];
-          const randomPreposition = data.prepositions[Math.floor(Math.random() * data.prepositions.length)];
-          const randomPronom = data.pronoms[Math.floor(Math.random() * data.pronoms.length)];
+          const randomName = data['names'][Math.floor(Math.random() * data.names.length)];
+          const randomAdjective = data['adjectives'][Math.floor(Math.random() * data.adjectives.length)];
+          const randomVerb = data['verbs'][Math.floor(Math.random() * data.verbs.length)];
+          const randomComplement = data['complements'][Math.floor(Math.random() * data.complements.length)];
+          const randomPreposition = data['prepositions'][Math.floor(Math.random() * data.prepositions.length)];
+          const randomPronom = data['pronoms'][Math.floor(Math.random() * data.pronoms.length)];
 
           //~write the sentence
           completeSentence = rowElement.querySelector(

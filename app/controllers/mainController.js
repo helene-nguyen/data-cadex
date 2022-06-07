@@ -30,7 +30,9 @@ async function doRandomCadex(req, res) {
 
       cadex.push(word);
     }
+
     cadex.pop();
+
     res.json(`${cadex.join(' ')}`);
     //~get random element from array
   } catch (err) {

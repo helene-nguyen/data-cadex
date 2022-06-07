@@ -39,7 +39,7 @@ describe('Cadex service', () => {
   
 });
 
-describe(`have the good data keys`, () => {
+describe(`Good data keys`, () => {
   //use 'test'
   test(`have the good properties`, () => {
     expect(data).toHaveProperty('names'),

@@ -124,23 +124,23 @@ const app = {
 
       if (response.ok) {
         const tableBodyElement = document.querySelector('tbody');
-        const cadex = await response.json();
+        const data = await response.json();
 
         let completeSentence;
         //~only take the name array length
-        for (const name of cadex.names) {
+        for (const name of data.names) {
           const template = document.querySelector('#template-sentence');
           const clone = document.importNode(template.content, true);
           const rowElement = clone.querySelector('tr');
 
           //~get random element from array
           //source https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-          const randomName = cadex.names[Math.floor(Math.random() * cadex.names.length)];
-          const randomAdjective = cadex.adjectives[Math.floor(Math.random() * cadex.adjectives.length)];
-          const randomVerb = cadex.verbs[Math.floor(Math.random() * cadex.verbs.length)];
-          const randomComplement = cadex.complements[Math.floor(Math.random() * cadex.complements.length)];
-          const randomPreposition = cadex.prepositions[Math.floor(Math.random() * cadex.prepositions.length)];
-          const randomPronom = cadex.pronoms[Math.floor(Math.random() * cadex.pronoms.length)];
+          const randomName = data.names[Math.floor(Math.random() * data.names.length)];
+          const randomAdjective = data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
+          const randomVerb = data.verbs[Math.floor(Math.random() * data.verbs.length)];
+          const randomComplement = data.complements[Math.floor(Math.random() * data.complements.length)];
+          const randomPreposition = data.prepositions[Math.floor(Math.random() * data.prepositions.length)];
+          const randomPronom = data.pronoms[Math.floor(Math.random() * data.pronoms.length)];
 
           //~write the sentence
           completeSentence = rowElement.querySelector(
@@ -149,6 +149,7 @@ const app = {
           tableBodyElement.insertAdjacentElement('afterbegin', rowElement);
         }
       }
+
     } catch (error) {
       console.error(error);
     }

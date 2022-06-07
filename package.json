@@ -31,6 +31,7 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-import-assertions": "^7.17.12",
     "eslint": "^8.16.0",
     "jest": "^28.1.0",
     "jest-watch-select-projects": "^2.0.0"

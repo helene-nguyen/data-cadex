@@ -143,7 +143,7 @@ const app = {
 
           let cadex = [];
 
-          for (const [key, value] of Object.entries(data)) {
+          for (const [key] of Object.entries(data)) {
             //~get random element from array
             let word = data[key][Math.floor(Math.random() * data[key].length)];
 

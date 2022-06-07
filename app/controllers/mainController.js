@@ -16,19 +16,18 @@ async function fetchAllCadex(req, res, next) {
 
 async function doRandomCadex(req, res) {
   try {
-    //New instance of Cadex
     const random = new Cadex().newCadex;
 
-    //source that helps https://stackoverflow.com/questions/53215853/how-to-add-a-query-string-to-req-url-in-express
-
+    //source that helps add in query qtring
+    //https://stackoverflow.com/questions/53215853/how-to-add-a-query-string-to-req-url-in-express
     let cadex = [];
 
     for (const [key, value] of Object.entries(random)) {
       let inputFilled = req.body[key];
-      let word = req.query[key]
+      let word = req.query[key];
 
       inputFilled ? (word = inputFilled) : (word = value);
-    
+
       cadex.push(word);
     }
     cadex.pop();

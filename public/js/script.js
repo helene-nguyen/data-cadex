@@ -6,7 +6,6 @@ const app = {
 
   //^INITIALIZATION
   async init() {
-    // console.log('TEST', location.origin);
     await app.fetchAllCadex();
     await app.fetchCadex();
     await app.tryPost();
@@ -24,7 +23,12 @@ const app = {
       word.remove();
     }
   },
-
+  /**
+ * 
+ * @param {string} word 
+ * @param {int} index 
+ * @returns 
+ */
   createWord(word, index) {
     const span = document.createElement('span');
     span.classList.add('word');
@@ -32,7 +36,10 @@ const app = {
     span.style.animationDelay = index / 4 + 's';
     return span;
   },
-
+  /**
+ * 
+ * @param {string} phrase whole sentence
+ */
   displayPhrase(phrase) {
     //on retire l'éventuelle phrase affichée précédemment
     app.clearWords();
@@ -127,29 +134,30 @@ const app = {
         const data = await response.json();
 
         let completeSentence;
-        //~only take the name array length
+
+        //~only take the name array length for my table
         for (const name of data.names) {
           const template = document.querySelector('#template-sentence');
           const clone = document.importNode(template.content, true);
           const rowElement = clone.querySelector('tr');
 
-          //~get random element from array
-          //source https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-          const randomName = data['names'][Math.floor(Math.random() * data.names.length)];
-          const randomAdjective = data['adjectives'][Math.floor(Math.random() * data.adjectives.length)];
-          const randomVerb = data['verbs'][Math.floor(Math.random() * data.verbs.length)];
-          const randomComplement = data['complements'][Math.floor(Math.random() * data.complements.length)];
-          const randomPreposition = data['prepositions'][Math.floor(Math.random() * data.prepositions.length)];
-          const randomPronom = data['pronoms'][Math.floor(Math.random() * data.pronoms.length)];
+          let cadex = [];
+
+          for (const [key, value] of Object.entries(data)) {
+            //~get random element from array
+            let word = data[key][Math.floor(Math.random() * data[key].length)];
+
+            cadex.push(word);
+          }
+
+          let randomCadex = cadex.join(' ');
 
           //~write the sentence
-          completeSentence = rowElement.querySelector(
-            '.sentence'
-          ).textContent = `${randomName}  ${randomVerb} ${randomComplement} ${randomAdjective} ${randomPreposition} ${randomPronom}`;
+          completeSentence = rowElement.querySelector('.sentence').textContent = `${randomCadex}`;
+
           tableBodyElement.insertAdjacentElement('afterbegin', rowElement);
         }
       }
-
     } catch (error) {
       console.error(error);
     }

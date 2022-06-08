@@ -154,4 +154,4 @@ PGPORT=5432
 
 ## Déploiement
 
-
+Déploiement fait sur Heroku : https://cadex-app.herokuapp.com/

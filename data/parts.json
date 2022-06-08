@@ -1,5 +1,5 @@
 {
-    "name": [
+    "names": [
         "Le petit chaton",
         "Un pingouin",
         "Notre génial Jordan",
@@ -15,7 +15,7 @@
         "Mon petit frère",
         "Ma petite soeur"
     ],
-    "adjective": [
+    "adjectives": [
         "bien cuit",
         "amusé",
         "brillant",
@@ -29,7 +29,7 @@
         "moche",
         "ensanglanté"
     ],
-    "verb": [
+    "verbs": [
         "consulte",
         "tappe",
         "cuisine",
@@ -47,7 +47,7 @@
         "bouscule",
         "se bat contre"
     ],
-    "complement": [
+    "complements": [
         "une banane périmée",
         "un lot de bûches",
         "Gabriel",
@@ -59,7 +59,7 @@
         "un rouleau de papier toilette",
         "le gras du bide"
     ],
-    "pronom": [
+    "pronoms": [
         "qui faisait peur",
         "ce qui a causé sa perte",
         "où la vie déborde de champignons",
@@ -68,7 +68,7 @@
         "que pikachu a taclé",
         "dont on ignore l'exacte existence"
     ],
-    "preposition": [
+    "prepositions": [
         "avec un long poil dans le nez",
         "avec ses cheveux en pétard",
         "avec ses yeux qui sont en train de se dissoudre",

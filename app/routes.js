@@ -8,7 +8,7 @@ import { schema } from './schema/cadex.schema.js';
 
 /**
  * The Cadex is the name for 'Cadavre Exquis' in France, we put random words to make a sentence
- * @typedef {Object} Cadex
+ * @typedef {*} Cadex
  * @property {string} name
  * @property {string} verb
  * @property {string} complement

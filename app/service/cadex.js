@@ -1,15 +1,15 @@
 //~import data
 // source : https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file
-import data from '../../data/parts.json' assert {type:'json'};
+import data from '../../data/parts.json' assert {type: 'json'};
 import  { getRandomNumber }  from './random.js';
 //for test, error with assert
 //Support for the experimental syntax 'importAssertions' isn't currently enabled (3:42):
-// import data from '../../data/parts.json';
-// const { default: data } = await import('../../data/parts.json', {assert: { type: 'json' }})
+import { findAll } from '../datamapper/cadex.js';
 
+console.log(await findAll());
 /**
  * The Cadex is the name for 'Cadavre Exquis' in France, we put random words to make a sentence
- * @typedef {Object} Cadex
+ * @typedef {*} Cadex
  * @property {string} name
  * @property {string} verb
  * @property {string} complement

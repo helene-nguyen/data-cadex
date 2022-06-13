@@ -1,6 +1,6 @@
 # Cadavre exquis
 
-## Concept du jeu
+## Concept du jeu 🎰
 
 Le cadavre exquis est un jeu graphique ou d'écriture collectif inventé par les surréalistes, en particulier Jacques Prévert et Yves Tanguy, vers 1925.
 
@@ -10,12 +10,15 @@ L'ordre syntaxique est importante pour que la phrase soit grammaticalement corre
 
 Pour en savoir plus, c'est par là => [here](https://fr.wikipedia.org/wiki/Cadavre_exquis)
 
-## Concept de l'application
+## Concept de l'application 🎱
 
 Nous avons choisi de partir sur une phrase composée des différents éléments et qui n'existent que dans le cas où les éléments sont présents.
 
 ### Mise en place des éléments : MCD
 
+<details>
+<summary>Détails</summary>
+<br>
 Pour la mise en place des éléments, nous avons déterminé les associations qui existent entre les différentes entités avec leurs attributs respectifs déterminées chacunes par un code unique.
 
 La réalisation du modèle conceptuel a été fait sur [Mocodo](http://mocodo.wingi.net/) et voici le schéma :
@@ -54,9 +57,13 @@ On distingue donc les entités suivantes :
 - Pronom
 
 Et chacune des entités sont associées à l'entité phrase que l'on complètera.
+</details>
 
 ### Définition du MLD
 
+<details>
+<summary>Détails</summary>
+<br>
 Pour le modèle logique de données, nous allons retrouver les différentes tables :
 
 ```
@@ -69,13 +76,24 @@ VERB ( verb_id, element )
 PREPOSITION ( preposition_id, element )
 ```
 
+</details>
+
 ### Définition du MPD
+
+<details>
+<summary>Détails</summary>
+<br>
 
 Et voici le modèle physique de données pour l'établissement des différentes tables :
 
 ![MPD](./images/mpd.png)
+</details>
 
 ### Création de la base de données
+
+<details>
+<summary>Détails</summary>
+<br>
 
 Etablissement du fichier sql pour la création de la base de données [ici](./data/01_create_db.sql)
 
@@ -87,7 +105,13 @@ Voilà un exemple !
 
 ![constraint phrase table](./images/constraints.png)
 
+</details>
+
 ### Insertion des données en utilisant Javascript
+
+<details>
+<summary>Détails</summary>
+<br>
 
 On cherche à importer les données d'un fichier JSON dans la base de données qu'on a créé au préalable.
 
@@ -151,15 +175,15 @@ PGPASSWORD=#
 PGPORT=5432
 ```
 
-## Partie Back : création de l'API
+</details>
 
-## Partie Front : récupération et affichage des données
+## Partie Back : création de l'API 🔙🔚
 
-## Déploiement
+### Mise en place du package Joi 
 
-Déploiement fait sur Heroku : <https://cadex-app.herokuapp.com/>
-
-## Mise en place du package Joi
+<details>
+<summary>Détails</summary>
+<br>
 
 Télécharger le module Joi
 
@@ -248,7 +272,13 @@ Pour la méthode body, on met bien en paramètre le schéma qu'on récupèrera. 
 
 Par contre, si les éléments passent, grâce au `next()` on passera bien à la fonction suivante (on poursuit notre 'route' :p ! )
 
-## Mise en place de JSDocs grâce à Swagger
+</details>
+
+### Mise en place de JSDocs grâce à Swagger
+
+<details>
+<summary>Détails</summary>
+<br>
 
 ## Installation
 
@@ -302,6 +332,50 @@ const options = {
 expressJSDocSwagger(app)(options);
 ```
 
+Exemple pour l'écriture de la documentation
+
+```js
+//~Import modules
+import { Router } from 'express';
+const router = Router();
+
+import { fetchAllCadex, doRandomCadex } from './controllers/mainController.js';
+import { validationService } from './service/validation.js';
+import { schema } from './schema/cadex.schema.js';
+
+/**
+ * The Cadex is the name for 'Cadavre Exquis' in France, we put random words to make a sentence
+ * @typedef {*} Cadex
+ * @property {string} name
+ * @property {string} verb
+ * @property {string} complement
+ * @property {string} adjective
+ * @property {string} preposition
+ * @property {string} pronom
+ */
+
+//~Routes
+/*mw validation to check if the body returns the correct response*/
+
+/**
+ * GET /v1/cadex
+ * @summary Génère un cadex
+ * @tags GET
+ * @return {Cadex} 200 - success response - application/json
+ */
+router.get('/v1/cadex', validationService.request, fetchAllCadex);
+/**
+ * POST /v1/cadex
+ * @summary Ajoute des mots à mon dictionnaire
+ * @tags POST
+ * @return {} 200 - success response - application/json
+ */
+router.post('/v1/cadex', validationService.body(schema), doRandomCadex);
+
+export { router };
+
+```
+
 Pour atteindre notre doc :
 
 ajouter `/api-docs`
@@ -323,3 +397,57 @@ Et Tadaaaaam
 ### Et un petit custom pour tester mon tag
 
 ![swagger](./images/swagger2.jpg)
+
+</details>
+
+## Utilisation de la base de données
+
+<details>
+<summary>Détails</summary>
+<br>
+
+### Modification des noms de tables
+
+Pour garder les nommages déjà utilisés, j'ai mis à jour le nom des tables en base de données 
+
+```sql
+BEGIN;
+
+ALTER TABLE "name" RENAME TO "names";
+ALTER TABLE "verb" RENAME TO "verbs";
+ALTER TABLE "complement" RENAME TO "complements";
+ALTER TABLE "adjective" RENAME TO "adjectives";
+ALTER TABLE "preposition" RENAME TO "prepositions";
+ALTER TABLE "pronom" RENAME TO "pronoms";
+
+COMMIT;
+```
+### Mise en place de la connection avec DB
+
+La connection avec la base de données se fera par le biais du module `pg`
+
+```js
+//~import pg module
+//module pg for CommonJs, need to import by default first
+import pg from 'pg';
+
+//~create new client
+const client = new pg.Client();
+
+//~connect client
+client.connect();
+
+//~export client
+export { client };
+```
+Il faudra également bien vérifier les informations renseignées dans notre fichier `.env`
+
+
+
+</details>
+
+## Partie Front : récupération et affichage des données 🎨
+
+## Déploiement ♓
+
+Déploiement fait sur Heroku : <https://cadex-app.herokuapp.com/>

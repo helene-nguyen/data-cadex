@@ -73,5 +73,5 @@ app.use(_404);
 const PORT = process.env.PORT ?? 3000;
 
 app.listen(PORT, () => {
-    console.log(`Running server on : http://localhost:${PORT}`);
+    console.log(`\x1b[1;33m\u26a1Running server on : http://localhost:${PORT} \u26a1\x1b[0m`);
 });

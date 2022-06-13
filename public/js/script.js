@@ -127,11 +127,13 @@ const app = {
   //^Testing json file
   async fetchAllCadex() {
     try {
+     
       const response = await fetch(`${app.baseUrl}/cadex${location.search}`);
 
       if (response.ok) {
         const tableBodyElement = document.querySelector('tbody');
         const data = await response.json();
+       
         
 
         let completeSentence;

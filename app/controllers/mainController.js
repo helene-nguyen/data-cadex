@@ -1,7 +1,7 @@
 //~import modules
 import { _500 } from './errorController.js';
 import { Cadex } from '../models/cadex.js';
-import { createData } from '../datamapper/cadex.js';
+// import { createData } from '../datamapper/cadex.js';
 
 //~controller
 async function fetchAllCadex(req, res, next) {

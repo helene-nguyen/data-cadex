@@ -179,7 +179,7 @@ PGPORT=5432
 
 ## Partie Back : création de l'API 🔙🔚
 
-### Mise en place du package Joi 
+### Mise en place du package Joi
 
 <details>
 <summary>Détails</summary>
@@ -408,7 +408,7 @@ Et Tadaaaaam
 
 ### Modification des noms de tables
 
-Pour garder les nommages déjà utilisés, j'ai mis à jour le nom des tables en base de données 
+Pour garder les nommages déjà utilisés, j'ai mis à jour le nom des tables en base de données
 
 ```sql
 BEGIN;
@@ -422,6 +422,7 @@ ALTER TABLE "pronom" RENAME TO "pronoms";
 
 COMMIT;
 ```
+
 ### Mise en place de la connection avec DB
 
 La connection avec la base de données se fera par le biais du module `pg`
@@ -440,9 +441,10 @@ client.connect();
 //~export client
 export { client };
 ```
+
 Il faudra également bien vérifier les informations renseignées dans notre fichier `.env`
 
-### Récupération des données 
+### Récupération des données
 
 Pour la récupération des données à la base de données, on va essayer de garder la structure du fichier JSON : un objet qui contient chaque élément sous une structure key:value.
 

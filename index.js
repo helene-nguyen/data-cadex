@@ -5,6 +5,39 @@ import 'dotenv/config';
 import express from 'express';
 const app = express();
 
+//! For ESMODULE, to get __dirname
+//source : https://bobbyhadz.com/blog/javascript-dirname-is-not-defined-in-es-module-scope#:~:text=The%20__dirname%20or%20__,directory%20name%20of%20the%20path.
+import path from 'path';
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//~SWAGGER
+import expressJSDocSwagger from 'express-jsdoc-swagger';
+
+const options = {
+  info: {
+      version: "1.0.0",
+      title: "API Cadex",
+      license: {
+          name: "MIT",
+      },
+  },
+  security: {
+      BasicAuth: {
+          type: "http",
+          scheme: "basic",
+      },
+  },
+  swaggerUIPath: "/api-docs" ,
+  baseDir: __dirname,
+  // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
+  filesPattern: "./**/*.js",
+};
+
+expressJSDocSwagger(app)(options);
+
 //~Protect our API
 import helmet from 'helmet';
 app.use(helmet());

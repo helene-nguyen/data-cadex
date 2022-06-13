@@ -132,6 +132,7 @@ const app = {
       if (response.ok) {
         const tableBodyElement = document.querySelector('tbody');
         const data = await response.json();
+        
 
         let completeSentence;
 

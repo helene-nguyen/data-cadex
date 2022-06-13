@@ -28,5 +28,34 @@ async function findAll() {
 
   return data;
 }
+/**
+ * 
+ * @param {string} dataElement Element we want to insert in table 
+ */
+async function createData(dataElement) {
 
-export { findAll };
+  for (let index = 0; index < TABLE_NAME.length; index++) {
+    const element = TABLE_NAME[index];
+    console.log("element: ", element.slice(0, -1));
+
+    const bodyElement = element.slice(0, -1);
+    
+    console.log(dataElement.bodyElement);
+        
+      const query = {
+        text: `
+            INSERT INTO "${element}"
+            ("element")
+            VALUES
+            ($1);`,
+        values: [dataElement.bodyElement]
+      };
+
+      // const result = await client.query(query);
+
+      return result.rowCount;
+    
+  }
+}
+
+export { findAll, createData };

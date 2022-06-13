@@ -7,7 +7,6 @@ async function fetchAllCadex(req, res, next) {
   try {
     //
     const cadex = new Cadex();
-console.log(cadex);
     res.json(cadex.data);
   } catch (err) {
     _500(err, req, res);

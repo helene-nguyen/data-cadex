@@ -442,7 +442,53 @@ export { client };
 ```
 Il faudra également bien vérifier les informations renseignées dans notre fichier `.env`
 
+### Récupération des données 
 
+Pour la récupération des données à la base de données, on va essayer de garder la structure du fichier JSON : un objet qui contient chaque élément sous une structure key:value.
+
+Pour cela, j'ai choisi de partir sur une boucle me permettant de récupérer chaque table et leurs valeurs respectives :
+
+```js
+//~import modules
+import { client } from '../database.js';
+//destructured array
+const TABLE_NAME = ['names', 'verbs', 'complements', 'adjectives', 'prepositions', 'pronoms'];
+
+//~datamapper
+/**
+ * 
+ * @returns all data from DB where each key is table and value their own values
+ */
+async function findAll() {
+  const data = {};
+
+  for (let index = 0; index < TABLE_NAME.length; index++) {
+    const element = TABLE_NAME[index];
+
+    const query = {
+      text: `
+        SELECT 
+        JSON_AGG("${element}".element) as "${element}" 
+        FROM ${element};`
+    };
+
+    const result = await client.query(query);
+
+    data[element] = result.rows[0][element];
+  }
+
+  return data;
+}
+
+export { findAll };
+
+```
+
+On récupère bien les données voulues
+
+![data](./images/data.jpg)
+
+Et cela nous permet de garder la structure déjà existante.
 
 </details>
 

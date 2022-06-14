@@ -33,28 +33,35 @@ async function findAll() {
  * @param {string} dataElement Element we want to insert in table 
  */
 async function createData(dataElement) {
-
   for (let index = 0; index < TABLE_NAME.length; index++) {
     const element = TABLE_NAME[index];
-    console.log("element: ", element.slice(0, -1));
 
-    const bodyElement = element.slice(0, -1);
-    
-    console.log(dataElement.bodyElement);
-        
-      const query = {
-        text: `
-            INSERT INTO "${element}"
-            ("element")
-            VALUES
-            ($1);`,
-        values: [dataElement.bodyElement]
-      };
+    //giving 'name' in singular
+    const tableElement = element.slice(0, -1);
+    const bodyElementValue = dataElement[tableElement];
 
-      // const result = await client.query(query);
+    if (bodyElementValue !== undefined) {
 
-      return result.rowCount;
-    
+      for (const [key, value] of Object.entries(dataElement)) {
+        if (key === tableElement) {
+          console.log(key);
+          console.log(value);
+
+          const query = {
+            text: `
+              INSERT INTO "${element}"
+              ("element")
+              VALUES
+              ($1);`,
+            values: [value]
+          };
+       
+          await client.query(query);
+          //if return, created only one entry
+        }
+
+      }
+    }
   }
 }
 

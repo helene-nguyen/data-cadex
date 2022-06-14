@@ -402,6 +402,8 @@ Et Tadaaaaam
 
 ## Utilisation de la base de données
 
+### Branche `DB` => permet de voir les requêtes
+
 <details>
 <summary>Détails</summary>
 <br>
@@ -485,12 +487,56 @@ async function findAll() {
 export { findAll };
 
 ```
+La requête utilisée est une fonction d'aggrégation qui me permet ici de ne générer qu'une cellule de données avec à l'intérieur un JSON avec toutes les données.
 
 On récupère bien les données voulues
 
 ![data](./images/data.jpg)
 
 Et cela nous permet de garder la structure déjà existante.
+
+### Création des données
+
+Pour la création des données, on a donc la fonction suivante
+
+```js
+async function createData(dataElement) {
+  for (let index = 0; index < TABLE_NAME.length; index++) {
+    const element = TABLE_NAME[index];
+    //giving 'name' in singular
+    const tableElement = element.slice(0, -1);
+    const bodyElementValue = dataElement[tableElement];
+
+    if (bodyElementValue !== undefined) {
+      for (const [key, value] of Object.entries(dataElement)) {
+        if (key === tableElement) {
+          const query = {
+            text: `
+              INSERT INTO "${element}"
+              ("element")
+              VALUES
+              ($1);`,
+            values: [value]
+          };
+
+          await client.query(query);
+          //if return, created only one entry
+        }
+      }
+    }
+  }
+}
+```
+
+En fonction du nombre de tables, je récupère l'intitulé et j'effectue ma boucle qui me permet de comparer ce que je récupère du body pour envoyer seulement ce dont j'ai besoin.
+
+=> TESTS
+
+L'insertion des données se font correctement.
+
+Ici, je ne gère volontairement pas si l'élément est déjà
+
+![test](./images/test.jpg)
 
 </details>
 

@@ -21,10 +21,9 @@ async function doRandomCadex(req, res) {
     //source that helps add in query qtring
     //https://stackoverflow.com/questions/53215853/how-to-add-a-query-string-to-req-url-in-express
     let cadex = [];
-    
-    const create = await createData(req.body);
-    console.log("create: ", create);
-    
+
+    await createData(req.body);
+
     for (const [key, value] of Object.entries(random)) {
       let inputFilled = req.body[key];
       let word = req.query[key];

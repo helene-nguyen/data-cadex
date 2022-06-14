@@ -17,7 +17,7 @@ async function findAll() {
     const query = {
       text: `
         SELECT 
-        JSON_AGG("${element}".element) as "${element}" 
+        JSON_AGG(DISTINCT "${element}".element) as "${element}" 
         FROM ${element};`
     };
 
@@ -30,23 +30,18 @@ async function findAll() {
 }
 /**
  * 
- * @param {string} dataElement Element we want to insert in table 
+ * @param {string} dataElement Body we get for inserting in DB
  */
 async function createData(dataElement) {
   for (let index = 0; index < TABLE_NAME.length; index++) {
     const element = TABLE_NAME[index];
-
     //giving 'name' in singular
     const tableElement = element.slice(0, -1);
     const bodyElementValue = dataElement[tableElement];
 
     if (bodyElementValue !== undefined) {
-
       for (const [key, value] of Object.entries(dataElement)) {
         if (key === tableElement) {
-          console.log(key);
-          console.log(value);
-
           const query = {
             text: `
               INSERT INTO "${element}"
@@ -55,11 +50,10 @@ async function createData(dataElement) {
               ($1);`,
             values: [value]
           };
-       
+
           await client.query(query);
           //if return, created only one entry
         }
-
       }
     }
   }

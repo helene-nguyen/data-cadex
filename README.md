@@ -380,7 +380,7 @@ Pour atteindre notre doc :
 
 ajouter `/api-docs`
 
-Avec JSDOCS on peut grouper nos routes avec
+Avec JSDOCS on peut grouper nos routes avec le tag
 
 ```js
 @tags GET
